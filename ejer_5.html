@@ -1,0 +1,32 @@
+<input type="number" id="cantidad">
+
+<button onclick="crearTabla()">Crear</button>
+
+<button onclick="sumar()">Sumar</button>
+
+<table id="tabla"></table>
+<p id="resultado"></p>
+
+<script>
+function crearTabla() {
+    let n = document.getElementById("cantidad").value;
+    let tabla = document.getElementById("tabla");
+    tabla.innerHTML = "";
+
+    for (let i = 0; i < n; i++) {
+        let fila = `<tr><td>${Math.floor(Math.random()*100)}</td></tr>`;
+        tabla.innerHTML += fila;
+    }
+}
+
+function sumar() {
+    let suma = 0;
+    let celdas = document.querySelectorAll("#tabla td");
+
+    celdas.forEach(td => {
+        suma += parseInt(td.innerText);
+    });
+
+    document.getElementById("resultado").innerText = "Suma: " + suma;
+}
+</script>
